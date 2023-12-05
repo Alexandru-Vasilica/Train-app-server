@@ -1,0 +1,9 @@
+{
+  "name" : "tema2",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "bb588985e37484d543fc849d0d79434e0d45bb3c",
+  "dependencies" : [ {
+    "name" : "pugixml",
+    "version>=" : "1.14"
+  } ]
+}

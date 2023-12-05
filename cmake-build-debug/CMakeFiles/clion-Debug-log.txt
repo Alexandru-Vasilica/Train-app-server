@@ -1,0 +1,15 @@
+/home/alexv/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/alexv/.local/share/JetBrains/Toolbox/apps/clion/bin/ninja/linux/x64/ninja -DCMAKE_TOOLCHAIN_FILE=/home/alexv/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake -G Ninja -S /home/alexv/CLionProjects/tema2 -B /home/alexv/CLionProjects/tema2/cmake-build-debug
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-linux...
+All requested packages are currently installed.
+Total install time: 404 ns
+pugixml provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(pugixml CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE pugixml::static pugixml::pugixml)
+
+-- Running vcpkg install - done
+-- Configuring done (0.9s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/alexv/CLionProjects/tema2/cmake-build-debug

@@ -1,0 +1,9 @@
+Detecting compiler hash for triplet x64-linux...
+All requested packages are currently installed.
+Total install time: 404 ns
+pugixml provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(pugixml CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE pugixml::static pugixml::pugixml)
+
