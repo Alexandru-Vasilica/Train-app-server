@@ -21,6 +21,7 @@ public:
     string destination;
     int time_of_arrival;
     int time_of_departure;
+    int early;
     explicit TrainRoute(pugi::xml_node route,Train* train);
     void print() const;
     string arrival_to_string() const;

@@ -11,6 +11,8 @@ TrainRoute::TrainRoute(pugi::xml_node route, Train *train) {
     this->destination=route.attribute("DenStaDestinatie").as_string();
     this->time_of_departure=route.attribute("OraP").as_int();
     this->time_of_arrival=route.attribute("OraS").as_int();
+    early=0;
+
 }
 
 void TrainRoute::print() const {
@@ -38,6 +40,8 @@ Train::Train(pugi::xml_node train) {
     }
     origin=routes.front().origin;
     destination=routes.back().destination;
+    delay=0;
+    rwlock = PTHREAD_RWLOCK_INITIALIZER;
 }
 
 vector<const TrainRoute *> Train::get_routes(const string &location) const {

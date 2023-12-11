@@ -8,6 +8,7 @@
 #include<vector>
 #include<string>
 #include <pugixml.hpp>
+#include <pthread.h>
 
 using namespace std;
 
@@ -16,8 +17,10 @@ class TrainRoute;
 class Train {
 public:
     int number;
+    pthread_rwlock_t  rwlock;
     vector<TrainRoute> routes;
     string origin,destination;
+    int delay;
     explicit Train(pugi::xml_node train);
     void print() const;
     vector<const TrainRoute *> get_routes(const string &location) const;
