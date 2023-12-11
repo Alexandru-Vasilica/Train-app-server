@@ -37,8 +37,6 @@ void ThreadPool::start() {
         pthread_t thread;
         pthread_create(&thread, nullptr,&ThreadPool::thread_action,(void*)&thread_indexes[i]);
     }
-    sleep(1);
-
 }
 
 

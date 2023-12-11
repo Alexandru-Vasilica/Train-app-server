@@ -14,6 +14,7 @@
 #include <sys/time.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include "requests.h"
 
 #include "TrainData.h"
 #include "Commands.h"
@@ -23,24 +24,15 @@
 using namespace std;
 
 #define PORT 3000
-#define COMMNANDLINE_BUFFER_SIZE 200
+
 #define RESPONSE_LINE_BUFFER_SIZE 100
 
 
-struct request
-{
-    int fd;
-    char location[20];
-    command_type type;
-    int argc;
-    char argv[5][COMMNANDLINE_BUFFER_SIZE];
-};
-
 int main() {
-    TrainData data("../rute.xml");
+
     CommandQueue commandQueue;
-    data.get_routes("Micula Hm.");
-//    commandQueue.add_command(new RoutesCommand(1,&data,"Micula Hm."));
+//    data.get_routes("Micula Hm.");
+//    commandQueue.add_command(new RoutesCommand(1,data,"Micula Hm."));
 
     pthread_mutex_t mlock = PTHREAD_MUTEX_INITIALIZER;
     pthread_cond_t condition = PTHREAD_COND_INITIALIZER;
@@ -80,7 +72,7 @@ int main() {
         return errno;
     }
     pool.start();
-
+    TrainData* data=new TrainData("../rute2.xml");
     if (listen(sd, 10) == -1)
     {
         perror("[server] Eroare la listen().\n");
@@ -135,12 +127,16 @@ int main() {
             if (fd != sd && FD_ISSET(fd, &readfds))
             {
                 struct request req;
-                read(fd, &req, sizeof(struct request));
-                string location(req.location);
-//                cout<<location<<endl;
-                commandQueue.add_command(new RoutesCommand(fd,&data,location));
-                printf("Added request from descriptor %d to queue\n", fd);
-                pthread_cond_signal(&condition);
+                int bytes=read(fd, &req, sizeof(struct request));
+                if(bytes) {
+                    req.fd=fd;
+//                    commandQueue.add_command(get_request(req,data,actfds));
+                    commandQueue.add_command(new RoutesCommand(fd,data,req.location));
+                    printf("Added request from descriptor %d to queue\n", fd);
+                    pthread_cond_signal(&condition);
+                } else{
+                    FD_CLR(fd,&actfds);
+                }
             }
         }
     }

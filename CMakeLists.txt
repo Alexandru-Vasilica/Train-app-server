@@ -15,7 +15,8 @@ add_executable(tema2 main.cpp
         CommandQueue.cpp
         CommandQueue.h
         ThreadPool.cpp
-        ThreadPool.h)
+        ThreadPool.h
+        requests.h)
 
 find_package(pugixml CONFIG REQUIRED)
 target_link_libraries(tema2 PRIVATE pugixml::static pugixml::pugixml)

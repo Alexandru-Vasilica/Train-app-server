@@ -65,10 +65,11 @@ command_type DeparturesCommand::get_type() {
     return PLECARI;
 }
 
-DelayCommand::DelayCommand(int fd, TrainData *data, int number) {
+DelayCommand::DelayCommand(int fd, TrainData *data, int number, int delay) {
     this->fd=fd;
     this->data=data;
     this->train_number=number;
+    this->delay=delay;
 }
 
 void DelayCommand::execute() {

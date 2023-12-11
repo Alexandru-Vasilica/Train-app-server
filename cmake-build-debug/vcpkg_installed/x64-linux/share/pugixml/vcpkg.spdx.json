@@ -3,13 +3,13 @@
   "spdxVersion": "SPDX-2.2",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "documentNamespace": "https://spdx.org/spdxdocs/pugixml-x64-linux-1.14-9278443a-d584-4501-85c5-c7f05a763105",
-  "name": "pugixml:x64-linux@1.14 523336449fe6717a4fb772393ba159eb62f25f9ed9b70bb6fae0cfbecace2d24",
+  "documentNamespace": "https://spdx.org/spdxdocs/pugixml-x64-linux-1.14-406af7b6-6eb8-43da-b287-c0c140893222",
+  "name": "pugixml:x64-linux@1.14 cbb8c24cf4e10b53686ea2e99614e34a6b342775526f9a13690eac6f63880a5a",
   "creationInfo": {
     "creators": [
       "Tool: vcpkg-4c1df40a3c5c5e18de299a99e9accb03c2a82e1e"
     ],
-    "created": "2023-11-30T18:16:13Z"
+    "created": "2023-12-09T16:27:01Z"
   },
   "relationships": [
     {
@@ -48,7 +48,7 @@
       "name": "pugixml",
       "SPDXID": "SPDXRef-port",
       "versionInfo": "1.14",
-      "downloadLocation": "git+https://github.com/Microsoft/vcpkg#ports/pugixml",
+      "downloadLocation": "git+https://github.com/Microsoft/vcpkg@6e38344aea6e7529afde3895e0885ed5cb0c0542",
       "homepage": "https://github.com/zeux/pugixml",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -59,7 +59,7 @@
     {
       "name": "pugixml:x64-linux",
       "SPDXID": "SPDXRef-binary",
-      "versionInfo": "523336449fe6717a4fb772393ba159eb62f25f9ed9b70bb6fae0cfbecace2d24",
+      "versionInfo": "cbb8c24cf4e10b53686ea2e99614e34a6b342775526f9a13690eac6f63880a5a",
       "downloadLocation": "NONE",
       "licenseConcluded": "MIT",
       "licenseDeclared": "NOASSERTION",
@@ -83,7 +83,7 @@
   ],
   "files": [
     {
-      "fileName": ".//home/alexv/vcpkg/ports/pugixml/portfile.cmake",
+      "fileName": ".//home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/pugixml/6e38344aea6e7529afde3895e0885ed5cb0c0542/portfile.cmake",
       "SPDXID": "SPDXRef-file-0",
       "checksums": [
         {
@@ -95,7 +95,7 @@
       "copyrightText": "NOASSERTION"
     },
     {
-      "fileName": ".//home/alexv/vcpkg/ports/pugixml/vcpkg.json",
+      "fileName": ".//home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/pugixml/6e38344aea6e7529afde3895e0885ed5cb0c0542/vcpkg.json",
       "SPDXID": "SPDXRef-file-1",
       "checksums": [
         {

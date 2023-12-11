@@ -61,3 +61,23 @@ string Train::route_to_string(int idx) const {
     string output="Tren nr. "+std::to_string(number)+" "+routes[idx].origin+" - "+destination+": "+std::to_string(routes[idx].time_of_departure)+"(urmatoarea oprire: "+routes[idx].destination+")\n";
     return output;
 }
+
+vector<const TrainRoute *> Train::get_arrivals(const string &location) const {
+    vector<const TrainRoute*>output;
+    for( auto  &route:routes){
+        if(route.destination==location) {
+            output.push_back(&route);
+        }
+    }
+    return output;
+}
+
+vector<const TrainRoute *> Train::get_departures(const string &location) const {
+    vector<const TrainRoute*>output;
+    for( auto  &route:routes){
+        if(route.origin==location) {
+            output.push_back(&route);
+        }
+    }
+    return output;
+}

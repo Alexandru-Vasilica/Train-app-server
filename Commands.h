@@ -65,8 +65,9 @@ public:
 class DelayCommand:public Command{
 private:
     int train_number;
+    int delay;
 public:
-    DelayCommand(int fd,TrainData* data,int number);
+    DelayCommand(int fd, TrainData *data, int number, int delay);
     void execute() override;
     command_type get_type() override;
 };

@@ -22,6 +22,10 @@ public:
 
     vector<string> get_routes(const string &location) const;
 
+    vector<string> get_arrivals(const string &location) const;
+
+    vector<string> get_departures(const string &location) const;
+
     virtual ~TrainData();
 
 

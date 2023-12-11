@@ -24,7 +24,7 @@ vector<string> TrainData::get_routes(const string &location) const {
             for(auto route:train->get_routes(location))
                 query.push_back(route);
         }
-    cout<<"Outputing..."<<endl;
+//    cout<<"Outputing..."<<endl;
     for(auto route:query){
         if(route->origin==location){
             output.push_back(route->departure_to_string());
@@ -45,5 +45,13 @@ void TrainData::print() const {
 TrainData::~TrainData() {
     for(auto train: trains)
         delete train;
+}
+
+vector<string> TrainData::get_arrivals(const string &location) const {
+    return vector<string>();
+}
+
+vector<string> TrainData::get_departures(const string &location) const {
+    return vector<string>();
 }
 
