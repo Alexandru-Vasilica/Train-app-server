@@ -12,7 +12,7 @@ TrainData::TrainData(const string &xmlFile) {
         exit(1);
     }
     for (pugi::xml_node train: doc.child("XmlIf").child("XmlMts").child("Mt").child("Trenuri").children("Tren")){
-        trains.push_back(new Train(train));
+        trains.insert(pair<int,Train*>(train.attribute("Numar").as_int(),new Train(train)));
     }
 }
 
@@ -20,7 +20,7 @@ vector<string> TrainData::get_routes(const string &location) const {
     vector<const TrainRoute*> query;
     vector<string> output;
     cout<<location<<endl;
-    for(auto &train:trains) {
+    for(auto &[number,train]:trains) {
             for(auto route:train->get_routes(location))
                 query.push_back(route);
         }
@@ -37,13 +37,13 @@ vector<string> TrainData::get_routes(const string &location) const {
 
 
 void TrainData::print() const {
-    for(auto &train: trains){
+    for(auto &[number,train]: trains){
         train->print();
     }
 }
 
 TrainData::~TrainData() {
-    for(auto train: trains)
+    for(auto [number,train]: trains)
         delete train;
 }
 

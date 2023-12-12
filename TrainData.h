@@ -9,12 +9,13 @@
 #include"TrainRoute.h"
 #include<vector>
 #include<iostream>
+#include <unordered_map>
 
 using namespace std;
 
 class TrainData {
 public:
-    vector<Train*> trains;
+    unordered_map<int,Train*> trains;
 
     explicit TrainData(const string &xmlFile);
 
