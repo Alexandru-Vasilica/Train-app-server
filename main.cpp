@@ -72,7 +72,7 @@ int main() {
         return errno;
     }
     pool.start();
-    TrainData* data=new TrainData("../rute2.xml");
+    auto data=new TrainData("../rute2.xml");
     if (listen(sd, 10) == -1)
     {
         perror("[server] Eroare la listen().\n");
@@ -130,8 +130,8 @@ int main() {
                 int bytes=read(fd, &req, sizeof(struct request));
                 if(bytes) {
                     req.fd=fd;
-//                    commandQueue.add_command(get_request(req,data,actfds));
-                    commandQueue.add_command(new RoutesCommand(fd,data,req.location));
+                    commandQueue.add_command(get_request(req,*data,actfds));
+//                    commandQueue.add_command(new RoutesCommand(fd,data,req.location));
                     printf("Added request from descriptor %d to queue\n", fd);
                     pthread_cond_signal(&condition);
                 } else{

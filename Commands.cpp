@@ -96,17 +96,20 @@ command_type QuitCommand::get_type() {
     return QUIT;
 }
 
-ErrorCommand::ErrorCommand(int fd, TrainData *data, string message) {
+
+EstimateCommand::EstimateCommand(int fd, TrainData *data, int number, int delay) {
     this->fd=fd;
     this->data=data;
-    this->message=message;
+    this->train_number=number;
+    this->delay=delay;
 }
 
-void ErrorCommand::execute() {
-//TODO: implement execute error
+void EstimateCommand::execute() {
+
+    //TODO: implement execute quit
     cout<<"Commanda "<<this->get_type()<<endl;
 }
 
-command_type ErrorCommand::get_type() {
-    return ERROR;
+command_type EstimateCommand::get_type() {
+    return ESTIMARE;
 }

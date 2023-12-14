@@ -16,6 +16,7 @@ typedef enum
     SOSIRI,
     PLECARI,
     INTARZIERE,
+    ESTIMARE,
     STATIE,
     QUIT,
     HELP,
@@ -81,11 +82,12 @@ public:
     command_type get_type() override;
 };
 
-class ErrorCommand:public Command{
+class EstimateCommand:public Command{
 private:
-    string message;
+    int train_number;
+    int delay;
 public:
-    ErrorCommand(int fd,TrainData* data,string message);
+    EstimateCommand(int fd,TrainData* data, int number, int delay);
     void execute() override;
     command_type get_type() override;
 };
