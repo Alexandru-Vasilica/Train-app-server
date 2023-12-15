@@ -14,10 +14,10 @@ CommandQueue* ThreadPool::commands= nullptr;
     printf("Started thread %d\n",idx);
     while(true) {
         pthread_mutex_lock(mlock);
-        Command *command = commands->pop_command();
-        if (command == nullptr)
+//        Command *command = commands->pop_command();
+        if (commands->empty())
             pthread_cond_wait(condition,mlock);
-        command=commands->pop_command();
+        auto command=commands->pop_command();
         pthread_mutex_unlock(mlock);
         printf("Thread %d: Received command %d\n",idx,command->get_type());
         command->execute();

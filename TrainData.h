@@ -10,10 +10,14 @@
 #include<vector>
 #include<iostream>
 #include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
 class TrainData {
+private:
+    static bool sort_by_arrival(const TrainRoute *a, const TrainRoute *b);
+    static bool sort_by_departure(const TrainRoute *a, const TrainRoute *b);
 public:
     unordered_map<int,Train*> trains;
 
@@ -26,6 +30,8 @@ public:
     vector<string> get_arrivals(const string &location) const;
 
     vector<string> get_departures(const string &location) const;
+
+
 
     virtual ~TrainData();
 

@@ -17,4 +17,8 @@ Command *CommandQueue::pop_command() {
     return output;
 }
 
+bool CommandQueue::empty() {
+    return commands.empty();
+}
+
 

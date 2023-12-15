@@ -14,6 +14,7 @@ private:
 public:
     void add_command(Command* command);
     Command* pop_command();
+    bool empty();
 };
 
 
