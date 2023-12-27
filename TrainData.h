@@ -21,7 +21,7 @@ private:
 public:
     unordered_map<int,Train*> trains;
 
-    explicit TrainData(const string &xmlFile);
+    explicit TrainData(pugi::xml_document& doc);
 
     void print() const;
 

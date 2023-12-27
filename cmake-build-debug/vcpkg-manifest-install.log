@@ -1,6 +1,54 @@
 Detecting compiler hash for triplet x64-linux...
-All requested packages are currently installed.
-Total install time: 236 ns
+The following packages will be rebuilt:
+    pugixml:x64-linux -> 1.14 -- /home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/pugixml/6e38344aea6e7529afde3895e0885ed5cb0c0542
+  * vcpkg-cmake:x64-linux -> 2023-05-04 -- /home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/vcpkg-cmake/88a7058fc7fa73a9c4c99cfcae9d79e2abf87a5a
+  * vcpkg-cmake-config:x64-linux -> 2022-02-06#1 -- /home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/vcpkg-cmake-config/8d54cc4f487d51b655abec5f9c9c3f86ca83311f
+Additional packages (*) will be modified to complete this operation.
+Restored 0 package(s) from /home/alexv/.cache/vcpkg/archives in 1.19 ms. Use --debug to see more details.
+Removing 1/6 pugixml:x64-linux
+Elapsed time to handle pugixml:x64-linux: 10.1 ms
+Removing 2/6 vcpkg-cmake:x64-linux
+Elapsed time to handle vcpkg-cmake:x64-linux: 3.17 ms
+Removing 3/6 vcpkg-cmake-config:x64-linux
+Elapsed time to handle vcpkg-cmake-config:x64-linux: 944 us
+Installing 4/6 vcpkg-cmake-config:x64-linux...
+Building vcpkg-cmake-config:x64-linux...
+-- Installing port from location: /home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/vcpkg-cmake-config/8d54cc4f487d51b655abec5f9c9c3f86ca83311f
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake-config_x64-linux/share/vcpkg-cmake-config/vcpkg_cmake_config_fixup.cmake
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake-config_x64-linux/share/vcpkg-cmake-config/vcpkg-port-config.cmake
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake-config_x64-linux/share/vcpkg-cmake-config/copyright
+-- Performing post-build validation
+Stored binaries in 1 destinations in 3.42 ms.
+Elapsed time to handle vcpkg-cmake-config:x64-linux: 87.1 ms
+Installing 5/6 vcpkg-cmake:x64-linux...
+Building vcpkg-cmake:x64-linux...
+-- Installing port from location: /home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/vcpkg-cmake/88a7058fc7fa73a9c4c99cfcae9d79e2abf87a5a
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg_cmake_configure.cmake
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg_cmake_build.cmake
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg_cmake_install.cmake
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg-port-config.cmake
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/copyright
+-- Performing post-build validation
+Stored binaries in 1 destinations in 3.63 ms.
+Elapsed time to handle vcpkg-cmake:x64-linux: 80.5 ms
+Installing 6/6 pugixml:x64-linux...
+Building pugixml:x64-linux...
+-- Installing port from location: /home/alexv/.vcpkg-clion/vcpkg/buildtrees/versioning_/versions/pugixml/6e38344aea6e7529afde3895e0885ed5cb0c0542
+-- Using cached zeux-pugixml-v1.14.tar.gz.
+-- Cleaning sources at /home/alexv/.vcpkg-clion/vcpkg/buildtrees/pugixml/src/v1.14-3215fd4dab.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/alexv/.vcpkg-clion/vcpkg/downloads/zeux-pugixml-v1.14.tar.gz
+-- Using source at /home/alexv/.vcpkg-clion/vcpkg/buildtrees/pugixml/src/v1.14-3215fd4dab.clean
+-- Found external ninja('1.10.2').
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/alexv/.vcpkg-clion/vcpkg/packages/pugixml_x64-linux/lib/pkgconfig/pugixml.pc
+-- Fixing pkgconfig file: /home/alexv/.vcpkg-clion/vcpkg/packages/pugixml_x64-linux/debug/lib/pkgconfig/pugixml.pc
+-- Installing: /home/alexv/.vcpkg-clion/vcpkg/packages/pugixml_x64-linux/share/pugixml/copyright
+-- Performing post-build validation
+Stored binaries in 1 destinations in 65.7 ms.
+Elapsed time to handle pugixml:x64-linux: 11 s
+Total install time: 11 s
 pugixml provides CMake targets:
 
   # this is heuristically generated, and may not be correct

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <pugixml.hpp>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 class Train;
@@ -19,6 +20,7 @@ public:
     Train* train;
     string origin;
     string destination;
+    pugi::xml_node node;
     int time_of_arrival;
     int time_of_departure;
     int early;
@@ -26,6 +28,8 @@ public:
     void print() const;
     string arrival_to_string() const;
     string departure_to_string() const;
+    string departure_time_to_string() const;
+    string arrival_time_to_string() const;
 };
 
 

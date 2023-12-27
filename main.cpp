@@ -72,7 +72,15 @@ int main() {
         return errno;
     }
     pool.start();
-    auto data=new TrainData("../rute2.xml");
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file("../rute2.xml");
+    if (!result){
+        perror("Eroare deschidere fisier xml\n");
+        exit(1);
+    }
+    auto data=new TrainData(doc);
+    data->print();
+
     if (listen(sd, 10) == -1)
     {
         perror("[server] Eroare la listen().\n");

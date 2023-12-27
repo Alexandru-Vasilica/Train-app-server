@@ -17,6 +17,7 @@ class TrainRoute;
 class Train {
 public:
     int number;
+    pugi::xml_node node;
     pthread_rwlock_t  rwlock;
     vector<TrainRoute> routes;
     string origin,destination;

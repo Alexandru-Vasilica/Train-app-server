@@ -4,13 +4,7 @@
 
 #include "TrainData.h"
 
-TrainData::TrainData(const string &xmlFile) {
-    pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file(xmlFile.c_str());
-    if (!result){
-        perror("Eroare deschidere fisier xml\n");
-        exit(1);
-    }
+TrainData::TrainData(pugi::xml_document& doc) {
     for (pugi::xml_node train: doc.child("XmlIf").child("XmlMts").child("Mt").child("Trenuri").children("Tren")){
         trains.insert(pair<int,Train*>(train.attribute("Numar").as_int(),new Train(train)));
     }

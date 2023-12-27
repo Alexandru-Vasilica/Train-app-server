@@ -25,6 +25,7 @@ RoutesCommand::RoutesCommand(int fd, TrainData *data, string location) {
 
 void RoutesCommand::execute() {
     cout<<"Executing.."<<endl;
+    cout<<location<<endl;
     auto response=data->get_routes(location);
     cout<<"Got response"<<endl;
     sendResponse(response);
@@ -88,8 +89,10 @@ QuitCommand::QuitCommand(int fd, TrainData *data, fd_set *fds) {
 }
 
 void QuitCommand::execute() {
-    //TODO: implement execute quit
-    cout<<"Commanda "<<this->get_type()<<endl;
+    FD_CLR(fd,fds);
+    vector<string> output;
+    output.push_back("Goodbye!");
+    sendResponse(output);
 }
 
 command_type QuitCommand::get_type() {
