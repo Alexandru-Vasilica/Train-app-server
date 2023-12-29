@@ -40,11 +40,16 @@ ArrivalsCommand::ArrivalsCommand(int fd, TrainData *data, string location) {
     this->fd=fd;
     this->data=data;
     this->location=location;
+    time_t time_data;
+    time(&time_data);
+    struct tm* local_time;
+    local_time = localtime(&time_data);
+    this->current_time = local_time->tm_hour * 3600 + local_time->tm_min * 60 + local_time->tm_sec;
 }
 
 void ArrivalsCommand::execute() {
-    //TODO: implement execute arrivals
-    cout<<"Commanda "<<this->get_type()<<endl;
+    vector<string> output=data->get_arrivals(location,current_time);
+    sendResponse(output);
 }
 
 command_type ArrivalsCommand::get_type() {
@@ -55,11 +60,16 @@ DeparturesCommand::DeparturesCommand(int fd, TrainData *data, string location) {
     this->fd=fd;
     this->data=data;
     this->location=location;
+    time_t time_data;
+    time(&time_data);
+    struct tm* local_time;
+    local_time = localtime(&time_data);
+    this->current_time = local_time->tm_hour * 3600 + local_time->tm_min * 60 + local_time->tm_sec;
 }
 
 void DeparturesCommand::execute() {
-    //TODO: implement execute departures
-    cout<<"Commanda "<<this->get_type()<<endl;
+    vector<string> output=data->get_departures(location,current_time);
+    sendResponse(output);
 }
 
 command_type DeparturesCommand::get_type() {

@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <unistd.h>
+#include <ctime>
 
 #define RESPONSE_LINE_BUFFER_SIZE 100
 typedef enum
@@ -47,6 +48,7 @@ public:
 
 class ArrivalsCommand: public Command{
 private:
+    int current_time;
     string location;
 public:
     ArrivalsCommand(int fd,TrainData* data,string location);
@@ -56,6 +58,7 @@ public:
 
 class DeparturesCommand:public Command{
 private:
+    int current_time;
     string location;
 public:
     DeparturesCommand(int fd,TrainData* data,string location);

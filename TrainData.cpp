@@ -67,12 +67,24 @@ TrainData::~TrainData() {
         delete train;
 }
 
-vector<string> TrainData::get_arrivals(const string &location) const {
-    return vector<string>();
+vector<string> TrainData::get_arrivals(const string &location, int current_time) const {
+    vector<string> output;
+    for (auto &[number,train]:trains){
+        for(auto &route:train->get_arrivals(location,current_time)){
+            output.push_back(route->arrival_to_string());
+        }
+    }
+    return output;
 }
 
-vector<string> TrainData::get_departures(const string &location) const {
-    return vector<string>();
+vector<string> TrainData::get_departures(const string &location, int current_time) const {
+    vector<string> output;
+    for (auto &[number,train]:trains){
+        for(auto &route:train->get_departures(location,current_time)){
+            output.push_back(route->departure_to_string());
+        }
+    }
+    return output;
 }
 
 bool TrainData::sort_by_arrival(const TrainRoute *a, const TrainRoute *b) {

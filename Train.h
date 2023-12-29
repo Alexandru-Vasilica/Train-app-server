@@ -25,8 +25,8 @@ public:
     explicit Train(pugi::xml_node train);
     void print() const;
     vector<const TrainRoute *> get_routes(const string &location) const;
-    vector<const TrainRoute *> get_arrivals(const string &location) const;
-    vector<const TrainRoute *> get_departures(const string &location) const;
+    vector<const TrainRoute *> get_arrivals(const string &location, int current_time) const;
+    vector<const TrainRoute *> get_departures(const string &location, int current_time) const;
     string route_to_string(int idx) const;
 
 };

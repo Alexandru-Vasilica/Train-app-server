@@ -94,20 +94,20 @@ string Train::route_to_string(int idx) const {
     return output;
 }
 
-vector<const TrainRoute *> Train::get_arrivals(const string &location) const {
+vector<const TrainRoute *> Train::get_arrivals(const string &location, int current_time) const {
     vector<const TrainRoute*>output;
     for( auto  &route:routes){
-        if(route.destination==location) {
+        if(route.destination==location && (current_time<=route.time_of_arrival<=current_time+3600 || route.time_of_arrival<=current_time+3600-SECONDS_IN_DAY)) {
             output.push_back(&route);
         }
     }
     return output;
 }
 
-vector<const TrainRoute *> Train::get_departures(const string &location) const {
+vector<const TrainRoute *> Train::get_departures(const string &location, int current_time) const {
     vector<const TrainRoute*>output;
     for( auto  &route:routes){
-        if(route.origin==location) {
+        if(route.destination==location && (current_time<=route.time_of_departure<=current_time+3600 || route.time_of_departure<=current_time+3600-SECONDS_IN_DAY)) {
             output.push_back(&route);
         }
     }

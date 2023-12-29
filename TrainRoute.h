@@ -11,6 +11,7 @@
 #include <pugixml.hpp>
 #include <sstream>
 #include <iomanip>
+#define SECONDS_IN_DAY 86400
 
 using namespace std;
 class Train;
