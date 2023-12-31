@@ -24,8 +24,7 @@
 using namespace std;
 
 #define PORT 3000
-
-#define RESPONSE_LINE_BUFFER_SIZE 100
+#define RESPONSE_LINE_BUFFER_SIZE 120
 
 
 int main() {
@@ -73,7 +72,7 @@ int main() {
     }
     pool.start();
     pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file("../rute2.xml");
+    pugi::xml_parse_result result = doc.load_file(ROUTE_PATH);
     if (!result){
         perror("Eroare deschidere fisier xml\n");
         exit(1);

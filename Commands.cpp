@@ -17,6 +17,13 @@ void Command::sendResponse(vector<string> response) {
 
 }
 
+void Command::sendResponse(string response) {
+    int lines=1;
+    write(fd,&lines,sizeof(int));
+    write(fd,response.c_str(),RESPONSE_LINE_BUFFER_SIZE);
+
+}
+
 RoutesCommand::RoutesCommand(int fd, TrainData *data, string location) {
     this->fd=fd;
     this->data=data;
@@ -84,8 +91,12 @@ DelayCommand::DelayCommand(int fd, TrainData *data, int number, int delay) {
 }
 
 void DelayCommand::execute() {
-    //TODO: implement execute delay
-    cout<<"Commanda "<<this->get_type()<<endl;
+    try{
+        data->set_delay(train_number,delay);
+        sendResponse("Intarzierea a fost inregistrata");
+    }catch (string &msg){
+        sendResponse(msg);
+    }
 }
 
 command_type DelayCommand::get_type() {
@@ -100,9 +111,7 @@ QuitCommand::QuitCommand(int fd, TrainData *data, fd_set *fds) {
 
 void QuitCommand::execute() {
     FD_CLR(fd,fds);
-    vector<string> output;
-    output.push_back("Goodbye!");
-    sendResponse(output);
+    sendResponse("La revedere!");
 }
 
 command_type QuitCommand::get_type() {
@@ -110,17 +119,21 @@ command_type QuitCommand::get_type() {
 }
 
 
-EstimateCommand::EstimateCommand(int fd, TrainData *data, int number, int delay) {
+EstimateCommand::EstimateCommand(int fd, TrainData *data, int number,string location, int early) {
     this->fd=fd;
     this->data=data;
     this->train_number=number;
-    this->delay=delay;
+    this->early=early;
+    this->location=location;
 }
 
 void EstimateCommand::execute() {
-
-    //TODO: implement execute quit
-    cout<<"Commanda "<<this->get_type()<<endl;
+    try{
+        data->set_early(train_number,location,early);
+        sendResponse("Estimarea a fost inregistrata");
+    }catch (string &msg){
+        sendResponse(msg);
+    }
 }
 
 command_type EstimateCommand::get_type() {

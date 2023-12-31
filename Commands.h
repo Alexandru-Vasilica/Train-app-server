@@ -31,6 +31,7 @@ protected:
     int fd;
     TrainData* data;
     void sendResponse(vector<string> response);
+    void sendResponse(string response);
 public:
     virtual void execute()=0;
     virtual command_type get_type()=0;
@@ -88,9 +89,10 @@ public:
 class EstimateCommand:public Command{
 private:
     int train_number;
-    int delay;
+    int early;
+    string location;
 public:
-    EstimateCommand(int fd,TrainData* data, int number, int delay);
+    EstimateCommand(int fd,TrainData* data, int number,string location, int delay);
     void execute() override;
     command_type get_type() override;
 };

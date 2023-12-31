@@ -9,6 +9,7 @@
 #include<string>
 #include <pugixml.hpp>
 #include <pthread.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -25,8 +26,10 @@ public:
     explicit Train(pugi::xml_node train);
     void print() const;
     vector<const TrainRoute *> get_routes(const string &location) const;
-    vector<const TrainRoute *> get_arrivals(const string &location, int current_time) const;
-    vector<const TrainRoute *> get_departures(const string &location, int current_time) const;
+    vector<pair<int, const TrainRoute *>> get_arrivals(const string &location, int current_time);
+    vector<pair<int, const TrainRoute *>> get_departures(const string &location, int current_time);
+    void set_delay(int delay);
+    void set_early(string& location,int early);
     string route_to_string(int idx) const;
 
 };

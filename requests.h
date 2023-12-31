@@ -27,7 +27,7 @@ Command* get_request(struct request req,TrainData& source, fd_set &fds){
             command= new DelayCommand(req.fd, &source, stoi(req.argv[0]), stoi(req.argv[1]));
             break;
         case ESTIMARE:
-            command= new EstimateCommand(req.fd, &source, stoi(req.argv[0]), stoi(req.argv[1]));
+            command= new EstimateCommand(req.fd, &source, stoi(req.argv[0]),req.location, stoi(req.argv[1]));
             break;
         case QUIT:
             command=new QuitCommand(req.fd,&source,&fds);

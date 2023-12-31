@@ -5,6 +5,7 @@
 #include "TrainData.h"
 
 TrainData::TrainData(pugi::xml_document& doc) {
+    this->doc=&doc;
     for (pugi::xml_node train: doc.child("XmlIf").child("XmlMts").child("Mt").child("Trenuri").children("Tren")){
         trains.insert(pair<int,Train*>(train.attribute("Numar").as_int(),new Train(train)));
     }
@@ -69,20 +70,32 @@ TrainData::~TrainData() {
 
 vector<string> TrainData::get_arrivals(const string &location, int current_time) const {
     vector<string> output;
+    vector<pair<int,const TrainRoute*>> query;
     for (auto &[number,train]:trains){
         for(auto &route:train->get_arrivals(location,current_time)){
-            output.push_back(route->arrival_to_string());
+            query.push_back(route);
         }
+    }
+    sort(query.begin(),query.end(),TrainData::sort_by_estimated_time);
+    output.reserve(query.size());
+    for(auto &route:query){
+        output.push_back(route.second->arrival_to_string(route.first));
     }
     return output;
 }
 
 vector<string> TrainData::get_departures(const string &location, int current_time) const {
+    vector<pair<int,const TrainRoute*>> query;
     vector<string> output;
     for (auto &[number,train]:trains){
         for(auto &route:train->get_departures(location,current_time)){
-            output.push_back(route->departure_to_string());
+            query.push_back(route);
         }
+    }
+    sort(query.begin(),query.end(),TrainData::sort_by_estimated_time);
+    output.reserve(query.size());
+    for(auto &route:query){
+        output.push_back(route.second->departure_to_string(route.first));
     }
     return output;
 }
@@ -94,5 +107,28 @@ bool TrainData::sort_by_arrival(const TrainRoute *a, const TrainRoute *b) {
 bool TrainData::sort_by_departure(const TrainRoute *a, const TrainRoute *b) {
     return a->time_of_departure<b->time_of_departure;
 }
+
+void TrainData::set_delay(int train_number, int delay) {
+    auto train=trains.find(train_number);
+    if(train==trains.end()){
+        throw string("Nu exista trenuri cu numarul dat");
+    }
+    train->second->set_delay(delay);
+    doc->save_file(ROUTE_PATH);
+}
+
+void TrainData::set_early(int train_number, string &location, int early) {
+    auto train=trains.find(train_number);
+    if(train==trains.end()){
+        throw string("Nu exista trenuri cu numarul dat");
+    }
+    train->second->set_early(location,early);
+    doc->save_file(ROUTE_PATH);
+}
+
+bool TrainData::sort_by_estimated_time(pair<int, const TrainRoute *> a, pair<int, const TrainRoute *> b) {
+    return a.first<b.first;
+}
+
 
 

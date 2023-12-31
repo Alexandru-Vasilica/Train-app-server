@@ -28,9 +28,14 @@ public:
     explicit TrainRoute(pugi::xml_node route,Train* train);
     void print() const;
     string arrival_to_string() const;
+    string arrival_to_string(int estimated_time) const;
     string departure_to_string() const;
+    string departure_to_string(int estimated_time) const;
     string departure_time_to_string() const;
     string arrival_time_to_string() const;
+    static string estimated_time_to_string(int estimated_time);
+
+    void set_early(int early);
 };
 
 
